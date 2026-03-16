@@ -3,113 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메트로톡 - 지하철 실시간 커뮤니티</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <title>이칸저칸 | 스마트한 지하철 커뮤니티</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
-        body { font-family: 'Noto Sans KR', sans-serif; }
-        .subway-gradient { background: linear-gradient(135deg, #F97316 0%, #FB923C 100%); }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
+        :root {
+            --primary: #FF8C00; /* 메인 오렌지 */
+            --primary-light: #FFF5EB;
+            --dark: #1D1D1F;
+            --grey: #86868B;
+            --white: #FFFFFF;
+        }
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-orange-500">🚇 이칸저칸</div>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#features" class="hover:text-blue-600 transition">주요기능</a>
-                <a href="#reviews" class="hover:text-blue-600 transition">사용후기</a>
-                <a href="#" class="bg-orange-500 text-white px-5 py-2 rounded-full hover:bg-orange-600 transition">앱 다운로드</a>
-            </div>
-        </div>
-    </nav>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
 
-    <header class="pt-32 pb-20 subway-gradient text-white">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                지금 내가 탄 지하철,<br>무슨 일이 일어나고 있나요?
-            </h1>
-            <p class="text-lg md:text-xl mb-10 opacity-90">
-                실시간 열차 상황부터 빈자리 제보까지, <br class="md:hidden"> 지하철 이용자들의 진짜 목소리를 만나보세요.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <button class="bg-white text-orange-500 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition">
-                    <i class="fab fa-apple mr-2"></i> App Store
-                </button>
-                <button class="bg-black text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-800 transition">
-                    <i class="fab fa-google-play mr-2"></i> Google Play
-                </button>
-            </div>
-        </div>
-    </header>
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            overflow-x: hidden;
+            word-break: keep-all;
+        }
 
-    <section id="features" class="py-20">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-16">이칸저칸은 이렇게 달라요</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-orange-100 text-orange-500 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-comment-dots"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-500">호선별 실시간 채널</h3>
-                    <p class="text-gray-600 leading-relaxed">내가 이용하는 호선 사람들끼리 실시간으로 소통하세요. 연착 정보, 냉방 상태를 바로 알 수 있습니다.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-chair"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-500">빈자리 제보 시스템</h3>
-                    <p class="text-gray-600 leading-relaxed">"몇 번 칸 내리는 분 많아요!" 내 앞자리가 비길 기다리는 지루함을 커뮤니티의 힘으로 해결합니다.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-orange-500">분실물 & 긴급 알림</h3>
-                    <p class="text-gray-600 leading-relaxed">방금 두고 내린 가방, 메트로톡 분실물 게시판에 올리면 같은 열차 이용객이 도와줄 거예요.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        /* 포인트 애니메이션 */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    <section class="bg-gray-100 py-20 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <h2 class="text-3xl font-bold mb-6">출퇴근길이 <br><span class="text-orange-500">정보의 장</span>으로 바뀝니다.</h2>
-                <ul class="space-y-4 text-lg">
-                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-3"></i> GPS 기반 현재 탑승 역 자동 인식</li>
-                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-3"></i> 불필요한 알림은 끄고, 내 호선 소식만 쏙쏙</li>
-                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mt-1 mr-3"></i> 익명으로 편하게 나누는 소소한 일상</li>
-                </ul>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="w-64 h-[500px] bg-gray-900 rounded-[3rem] border-[8px] border-gray-800 shadow-2xl relative overflow-hidden">
-                    <div class="w-1/2 h-6 bg-gray-800 absolute top-0 left-1/2 -translate-x-1/2 rounded-b-xl"></div>
-                    <div class="p-4 pt-10">
-                        <div class="bg-orange-500 h-8 rounded mb-4"></div>
-                        <div class="space-y-3">
-                            <div class="bg-white h-12 rounded shadow-sm p-2 text-[10px]">2호선 지금 엄청 시원해요! ❄️</div>
-                            <div class="bg-white h-12 rounded shadow-sm p-2 text-[10px]">잠실역 연착 5분 정도 있네요 참고하세요.</div>
-                            <div class="bg-white h-12 rounded shadow-sm p-2 text-[10px]">4번 칸 내리는 사람 많습니다! 앉아가세요!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        /* Header */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
 
-    <footer class="bg-white py-12 border-t">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <div class="text-2xl font-bold text-gray-400 mb-6">MetroTalk</div>
-            <p class="text-gray-500 text-sm">© 2026 MetroTalk Inc. All rights reserved.</p>
-            <div class="mt-4 space-x-4 text-sm text-gray-400">
-                <a href="#" class="hover:underline">이용약관</a>
-                <a href="#" class="hover:underline">개인정보처리방침</a>
-                <a href="#" class="hover:underline">문의하기</a>
-            </div>
-        </div>
-    </footer>
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
 
-</body>
-</html>
+        /* Hero Section */
+        .hero {
+            padding: 180px 8% 100px;
+            text-align: center;
+            background: radial-gradient(circle at top right, #FFF5EB 0%, #FFFFFF 50%);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 span { color: var(--primary); }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--grey);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-group {
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.2);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Features Section */
+        .section-label {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .features {
+            padding: 100px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: #FBFBFD;
+            padding: 48px;
+            border-radius: 32px;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
